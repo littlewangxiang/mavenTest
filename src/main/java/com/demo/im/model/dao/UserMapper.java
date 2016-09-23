@@ -1,7 +1,9 @@
 package com.demo.im.model.dao;
 
-import com.demo.im.entity.User;
+import org.springframework.stereotype.Repository;
 
+import com.demo.im.entity.User;
+@Repository(value="userDao")
 public interface UserMapper {
     int deleteByPrimaryKey(Integer uId);
 

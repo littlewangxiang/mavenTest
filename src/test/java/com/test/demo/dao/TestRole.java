@@ -1,30 +1,28 @@
-package com.test.demo.service;
+package com.test.demo.dao;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.demo.im.entity.User;
-import com.demo.im.model.service.UserService;
+import com.demo.im.entity.Role;
+import com.demo.im.model.dao.RoleMapper;
 
-public class UserTest {
+public class TestRole {
 	
-	private UserService userService;
+	private RoleMapper roleDao;
 	
 	@Before
 	public void before(){
 		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"classpath:spring.xml"
 				,"classpath:spring-mybatis.xml"});
-		userService = (UserService) context.getBean("userService");
+		roleDao = (RoleMapper) context.getBean("roleDao");
 	}
-	//哈哈
 	@Test
-	public void testGetUser(){
-		User u = userService.selectByPrimaryKey(1);
-		System.out.println(u.getuUsername());
+	public void getRole(){
+		Role role = roleDao.selectByPrimaryKey(1);
+		System.out.println(role.getRgId().getRgName());
 	}
-	
 	
 }
