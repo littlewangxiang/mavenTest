@@ -1,4 +1,4 @@
-package com.test.demo.dao;
+package com.test.demo.service;
 
 import java.util.List;
 
@@ -9,32 +9,25 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.demo.im.entity.TUser;
-import com.demo.im.model.dao.TUserMapper;
+import com.demo.im.model.service.TUserService;
 
-public class TestDao {
+public class TUserTest {
 	@Autowired
-	private TUserMapper tUserDao;
+	TUserService userService;
 	
 	@Before
 	public void before(){
 		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"classpath:spring.xml"
 				,"classpath:spring-mybatis.xml"});
-		tUserDao = (TUserMapper) context.getBean("tUserDao");
+		userService = (TUserService) context.getBean("tUserService");
 	}
-	
+	//哈哈
 	@Test
-	public void getUser(){
-		TUser user= tUserDao.selectUserRole(2);
-		System.out.println(user.getUsername());
+	public void testGetUser(){
+		TUser user = new TUser();
+		user.setUsername("zhanglei");
+		List<TUser> u = userService.getUserByParam(user);
+		System.out.println(u.size());
 	}
-	
-	@Test
-	public void getUserByParam(){
-		TUser u = new TUser();
-		u.setUsername("zhanglei");
-		List<TUser> user= tUserDao.selectByUserParam(u);
-		System.out.println(user.get(0).getUsername());
-	}
-	
 }

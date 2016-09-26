@@ -17,7 +17,7 @@ public class UserController {
 	private UserService userService;
 	private static final Logger log = LoggerFactory.getLogger(User.class);
 	
-	@RequestMapping("/getUser")
+	@RequestMapping("/admin/getUser")
 	public String getUser(Model model){
 		log.info("<<<<开始获取用户>>>>", "<<<UserManager,getUser>>>");
 		User u = userService.selectByPrimaryKey(1);

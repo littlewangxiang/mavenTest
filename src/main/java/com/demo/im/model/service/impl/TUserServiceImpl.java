@@ -10,7 +10,7 @@ import com.demo.im.entity.TUser;
 import com.demo.im.model.dao.TUserMapper;
 import com.demo.im.model.service.TUserService;
 
-@Service
+@Service(value="tUserService")
 public class TUserServiceImpl implements TUserService {
 	
 	@Autowired

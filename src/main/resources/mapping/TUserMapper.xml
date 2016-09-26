@@ -42,22 +42,27 @@
   		left join t_role_group rg on rg.u_id = r.rg_id
   	where u.u_id = #{uId,jdbcType=INTEGER}
   </select>
-  <select id="selectByUserParam" resultMap="BaseResultMap" parameterType="com.demo.im.entity.TUser">
+  <select id="selectByUserParam" resultMap="UserRoleMap" parameterType="com.demo.im.entity.TUser">
   	select 
-    <include refid="Base_Column_List" />
-    from user
+  		u.u_id, u.username, u.password, u.user_role,
+  		r.u_id, r.roleCode, r.roleName, r.type,
+	    rg.u_id, rg.rg_name, rg.type
+  	from user u 
+  		left join t_user_role ur on u.u_id = ur.user_id
+  		left join t_role r on ur.role_id = r.u_id
+  		left join t_role_group rg on rg.u_id = r.rg_id
     where "1=1" 
     	<if test="uId != null">
-    		and  u_id = #{uId,jdbcType=INTEGER}
+    		and  u.u_id = #{uId,jdbcType=INTEGER}
     	</if>
     	<if test="username != null">
-    		and  username = #{username,jdbcType=VARCHAR}
+    		and  u.username = #{username,jdbcType=VARCHAR}
     	</if>
     	<if test="password != null">
-    		and password = #{password,jdbcType=VARCHAR}
+    		and u.password = #{password,jdbcType=VARCHAR}
     	</if>
     	<if test="userRole != null">
-    		and user_role = #{userRole,jdbcType=VARCHAR}
+    		and u.user_role = #{userRole,jdbcType=VARCHAR}
     	</if>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

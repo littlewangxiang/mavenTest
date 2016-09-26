@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.im.model.dao.TResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.demo.im.entity.TResource" >
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="resName" property="resname" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap type="com.demo.im.entity.TResource" id="ResRoleResultMap" extends="BaseResultMap">
+  	<collection property="roles" ofType="com.demo.im.entity.Role">
+  		<id column="u_id" property="uId" jdbcType="INTEGER" />
+	    <result column="roleCode" property="rolecode" jdbcType="VARCHAR" />
+	    <result column="roleName" property="rolename" jdbcType="VARCHAR" />
+	    <result column="type" property="type" jdbcType="VARCHAR" />
+		<association property="rgId" javaType="com.demo.im.entity.RoleGroup" column="rg_id">
+			<id column="u_id" property="uId" jdbcType="INTEGER" />
+		    <result column="rg_name" property="rgName" jdbcType="VARCHAR" />
+		    <result column="type" property="type" jdbcType="VARCHAR" />
+		</association>
+  	</collection>
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    u_id, resName, type, value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_resource
+    where u_id = #{uId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByParam" resultMap="ResRoleResultMap" parameterType="com.demo.im.entity.TResource">
+  	select
+  		r.u_id, r.resName,r.type,r.value,
+  		rl.u_id, rl.roleCode, rl.roleName, rl.type, 
+  		rg.u_id, rg.rg_name, rg.type
+  	from t_resource r
+  		left join t_res_role rr on rr.res_id = r.u_id
+  		left join t_role rl on rl.u_id = rr.role_id
+  		left join t_role_group rg on rg.u_id = rl.rg_id
+  	where "1=1"
+  		<if test="uId != null" >
+        	and r.u_id = #{uId,jdbcType=INTEGER}
+        </if>
+        <if test="resname != null" >
+        	and r.resName = #{resname,jdbcType=VARCHAR}
+        </if>
+        <if test="type != null" >
+        	and r.type = #{type,jdbcType=VARCHAR}
+        </if>
+        <if test="value != null" >
+        	and r.value = #{value,jdbcType=VARCHAR}
+        </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_resource
+    where u_id = #{uId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.demo.im.entity.TResource" >
+    insert into t_resource (u_id, resName, type, 
+      value)
+    values (#{uId,jdbcType=INTEGER}, #{resname,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.im.entity.TResource" >
+    insert into t_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="resname != null" >
+        resName,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="resname != null" >
+        #{resname,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.im.entity.TResource" >
+    update t_resource
+    <set >
+      <if test="resname != null" >
+        resName = #{resname,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.im.entity.TResource" >
+    update t_resource
+    set resName = #{resname,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR}
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+</mapper>

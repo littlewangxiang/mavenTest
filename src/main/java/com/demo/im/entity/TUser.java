@@ -1,8 +1,14 @@
 package com.demo.im.entity;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class TUser {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public class TUser implements UserDetails{
     private Integer uId;
 
     private String username;
@@ -12,6 +18,8 @@ public class TUser {
     private String userRole;//用户角色类型
     
     private List<Role> roles;
+    
+	private Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 
     public Integer getuId() {
         return uId;
@@ -51,5 +59,38 @@ public class TUser {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+	
+	public void setAuthorities(Set<GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return authorities;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }
