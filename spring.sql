@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-09-23 16:42:27
+Date: 2016-09-26 16:56:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -178,6 +178,37 @@ CREATE TABLE `t_news` (
 INSERT INTO `t_news` VALUES ('1', 'qie', '的所发生的', '2016-09-19 15:45:05', '0');
 
 -- ----------------------------
+-- Table structure for `t_resource`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_resource`;
+CREATE TABLE `t_resource` (
+  `u_id` int(11) NOT NULL AUTO_INCREMENT,
+  `resName` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `value` varchar(100) NOT NULL,
+  PRIMARY KEY (`u_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='资源表';
+
+-- ----------------------------
+-- Records of t_resource
+-- ----------------------------
+INSERT INTO `t_resource` VALUES ('1', '根据id获取用户信息', 'URL', '/admin/getUser');
+
+-- ----------------------------
+-- Table structure for `t_res_role`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_res_role`;
+CREATE TABLE `t_res_role` (
+  `role_id` int(11) NOT NULL COMMENT '角色id',
+  `res_id` int(11) DEFAULT NULL COMMENT '资源id'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_res_role
+-- ----------------------------
+INSERT INTO `t_res_role` VALUES ('3', '1');
+
+-- ----------------------------
 -- Table structure for `t_role`
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role`;
@@ -195,6 +226,7 @@ CREATE TABLE `t_role` (
 -- ----------------------------
 INSERT INTO `t_role` VALUES ('1', 'ROLE_ADMIN_GOODS_ADD', '发布商品', 'ADMIN', '1');
 INSERT INTO `t_role` VALUES ('2', 'ROLE_USER_ORDER_LIST', '查看订单列表', 'USER', '2');
+INSERT INTO `t_role` VALUES ('3', 'ROLE_ADMIN_GETUSERBYID', '根据id查用户', 'ADMIN', '3');
 
 -- ----------------------------
 -- Table structure for `t_role_group`
@@ -238,13 +270,14 @@ CREATE TABLE `t_user_role` (
   `role_id` int(11) NOT NULL,
   `u_id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user_role
 -- ----------------------------
 INSERT INTO `t_user_role` VALUES ('4', '1', '1');
 INSERT INTO `t_user_role` VALUES ('2', '2', '2');
+INSERT INTO `t_user_role` VALUES ('2', '3', '3');
 
 -- ----------------------------
 -- Table structure for `user`
