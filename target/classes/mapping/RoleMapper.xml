@@ -28,6 +28,27 @@
     from t_role r ,t_role_group rg
     where r.rg_id = rg.u_id and r.u_id = #{uId,jdbcType=INTEGER}
   </select>
+  <select id="selectAllRoleByParam" parameterType="com.demo.im.entity.Role" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List" />
+  	from t_role r ,t_role_group rg
+  	where "1=1"
+  		<if test="uId != null" >
+        and u_id = #{uId,jdbcType=INTEGER}
+      </if>
+      <if test="rolecode != null" >
+        and rolecode = #{rolecode,jdbcType=VARCHAR}
+      </if>
+      <if test="rolename != null" >
+        and rolename = #{rolename,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null" >
+        and type = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="rgId != null" >
+        and rg_id = #{rgId,jdbcType=INTEGER}
+      </if>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_role
     where u_id = #{uId,jdbcType=INTEGER}

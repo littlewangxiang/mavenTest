@@ -1,5 +1,7 @@
 package com.demo.im.model.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.demo.im.entity.Role;
@@ -17,4 +19,6 @@ public interface RoleMapper {
     int updateByPrimaryKeySelective(Role record);
 
     int updateByPrimaryKey(Role record);
+    
+    List<Role> selectAllRoleByParam(Role role);
 }

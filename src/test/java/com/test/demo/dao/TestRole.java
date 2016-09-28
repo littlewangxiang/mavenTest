@@ -1,5 +1,7 @@
 package com.test.demo.dao;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -24,5 +26,9 @@ public class TestRole {
 		Role role = roleDao.selectByPrimaryKey(1);
 		System.out.println(role.getRgId().getRgName());
 	}
-	
+	@Test
+	public void getRolebyParam(){
+		List<Role> role= roleDao.selectAllRoleByParam(new Role());
+		System.out.println(role);
+	}
 }
