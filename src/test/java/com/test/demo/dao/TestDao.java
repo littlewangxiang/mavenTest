@@ -25,7 +25,7 @@ public class TestDao {
 	
 	@Test
 	public void getUser(){
-		TUser user= tUserDao.selectUserRole(2);
+		TUser user= tUserDao.selectUserRole(4);
 		System.out.println(user.getUsername());
 	}
 	

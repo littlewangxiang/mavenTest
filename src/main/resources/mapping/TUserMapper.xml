@@ -10,7 +10,7 @@
   <!--  -->
   <resultMap type="com.demo.im.entity.TUser" id="UserRoleMap" extends="BaseResultMap">
   	<collection property="roles" ofType="com.demo.im.entity.Role">
-  		<id column="u_id" property="uId" jdbcType="INTEGER" />
+  		<id column="role_id" property="roleId" jdbcType="INTEGER" />
 	    <result column="roleCode" property="rolecode" jdbcType="VARCHAR" />
 	    <result column="roleName" property="rolename" jdbcType="VARCHAR" />
 	    <result column="type" property="type" jdbcType="VARCHAR" />
@@ -34,22 +34,22 @@
   <select id="selectUserRole" resultMap="UserRoleMap" parameterType="java.lang.Integer">
   	select 
   		u.u_id, u.username, u.password, u.user_role,
-  		r.u_id, r.roleCode, r.roleName, r.type,
+  		r.role_id, r.roleCode, r.roleName, r.type,
 	    rg.u_id, rg.rg_name, rg.type
   	from user u 
   		left join t_user_role ur on u.u_id = ur.user_id
-  		left join t_role r on ur.role_id = r.u_id
+  		left join t_role r on ur.role_id = r.role_id
   		left join t_role_group rg on rg.u_id = r.rg_id
   	where u.u_id = #{uId,jdbcType=INTEGER}
   </select>
   <select id="selectByUserParam" resultMap="UserRoleMap" parameterType="com.demo.im.entity.TUser">
   	select 
   		u.u_id, u.username, u.password, u.user_role,
-  		r.u_id, r.roleCode, r.roleName, r.type,
+  		r.role_id, r.roleCode, r.roleName, r.type,
 	    rg.u_id, rg.rg_name, rg.type
   	from user u 
   		left join t_user_role ur on u.u_id = ur.user_id
-  		left join t_role r on ur.role_id = r.u_id
+  		left join t_role r on ur.role_id = r.role_id
   		left join t_role_group rg on rg.u_id = r.rg_id
     where "1=1" 
     	<if test="uId != null">

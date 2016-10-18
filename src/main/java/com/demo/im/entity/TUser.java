@@ -19,9 +19,13 @@ public class TUser implements UserDetails{
     
     private List<Role> roles;
     
-	private Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+	private Collection<GrantedAuthority> authorities ;
 
-    public Integer getuId() {
+    public void setAuthorities(Collection<GrantedAuthority> authorities) {
+		this.authorities = authorities;
+	}
+
+	public Integer getuId() {
         return uId;
     }
 
@@ -61,9 +65,7 @@ public class TUser implements UserDetails{
 		this.roles = roles;
 	}
 	
-	public void setAuthorities(Set<GrantedAuthority> authorities) {
-		this.authorities = authorities;
-	}
+	
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

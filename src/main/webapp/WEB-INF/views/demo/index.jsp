@@ -13,5 +13,7 @@
 	<#else>
 		姓名
 	</#if>
+	<br>
+	this is the page of admin getUser
 </body>
 </html>

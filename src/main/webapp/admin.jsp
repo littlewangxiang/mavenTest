@@ -7,10 +7,6 @@
 <title>login</title>
 </head>
 <body>
-	<form action="/mavenTest/j_spring_security_check" method="post">
-		账户:<input type="text" name="j_username" id="username"/>
-		密码:<input type="text" name="j_password" id="password"/>
-		<input type="submit" value="登陆"/>
-	</form>
+	i need admin auth
 </body>
 </html>

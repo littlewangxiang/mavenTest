@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>login</title>
+<title>error</title>
 </head>
 <body>
-	<form action="/mavenTest/j_spring_security_check" method="post">
-		账户:<input type="text" name="j_username" id="username"/>
-		密码:<input type="text" name="j_password" id="password"/>
-		<input type="submit" value="登陆"/>
-	</form>
+	您没有该页面的访问权限
 </body>
 </html>

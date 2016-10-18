@@ -9,7 +9,7 @@
 	<!-- 引入属性文件 -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
 	<context:annotation-config />
-	<context:component-scan base-package="com.demo.im.model.service,com.demo.im.model.dao,com.demo.im.model.core,com.test.demo.dao" />
+	<context:component-scan base-package="com.demo.im.model.service,com.demo.im.model.dao,com.demo.im.model.security,com.test.demo.dao" />
 	
 	<import resource="spring-mybatis.xml"/>
 	

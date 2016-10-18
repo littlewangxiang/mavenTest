@@ -5,6 +5,8 @@
 </head>
 <body>
 <h2>Hello World!</h2>
-it is no need to auth
+it is no need to auth  Index Page
+<br>
+<a href="http://localhost:8080/mavenTest/admin.jsp">goto admin</a>
 </body>
 </html>

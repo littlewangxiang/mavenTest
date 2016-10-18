@@ -1,7 +1,7 @@
 package com.demo.im.entity;
 
 public class Role {
-    private Integer uId;
+    private Integer roleId;
 
     private String rolecode;
 
@@ -11,13 +11,6 @@ public class Role {
 
     private RoleGroup rgId;
 
-    public Integer getuId() {
-        return uId;
-    }
-
-    public void setuId(Integer uId) {
-        this.uId = uId;
-    }
 
     public String getRolecode() {
         return rolecode;
@@ -50,4 +43,12 @@ public class Role {
     public void setRgId(RoleGroup rgId) {
         this.rgId = rgId;
     }
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
 }
