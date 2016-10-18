@@ -123,7 +123,7 @@ CREATE TABLE `sub_table` (
 -- ----------------------------
 INSERT INTO `sub_table` VALUES ('1', '20151110-089', '10', '1', '2015-11-10', '1', '清华园', '1888888');
 INSERT INTO `sub_table` VALUES ('3', '20151110-089', '10', '1', '2015-11-10', '1', '清华园', '1888888');
-INSERT INTO `sub_table` VALUES ('4', '2312341324', '45', '1', '2016-01-29', '1', '河北工程大学', '13645789554');
+INSERT INTO `sub_table` VALUES ('4', '2312341324', '45', '1', '2016-01-29', '1', '河北大学', '13645789554');
 INSERT INTO `sub_table` VALUES ('5', '234234234', '34', '1', '2016-01-29', '1', '河北大学一号院', '13645789551');
 INSERT INTO `sub_table` VALUES ('6', '234234234', '34', '1', '2016-01-29', '1', '河北大学一号院', '13645789551');
 
@@ -314,9 +314,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` VALUES ('2', 'zhanglei', 'qweasd', 'USER');
 INSERT INTO `user` VALUES ('3', '\"ceshi\"', '\"pass\"', 'USER');
 INSERT INTO `user` VALUES ('4', 'admin', '1111', 'ADMIN');
-INSERT INTO `user` VALUES ('5', '\"wangxiagn\"', '\"1111\"', 'USER');
-INSERT INTO `user` VALUES ('6', '王祥', '123456', 'USER');
-INSERT INTO `user` VALUES ('7', '王祥', '123456', 'USER');
+INSERT INTO `user` VALUES ('5', '\"wangyagn\"', '\"1111\"', 'USER');
+INSERT INTO `user` VALUES ('6', '王样', '123456', 'USER');
+INSERT INTO `user` VALUES ('7', '王样', '123456', 'USER');
 INSERT INTO `user` VALUES ('8', '嘿嘿', '567', 'USER');
 INSERT INTO `user` VALUES ('9', '哈哈34', '434', 'USER');
 INSERT INTO `user` VALUES ('12', 'wx', '11111', 'USER');
@@ -344,7 +344,7 @@ CREATE TABLE `user_table` (
 -- ----------------------------
 -- Records of user_table
 -- ----------------------------
-INSERT INTO `user_table` VALUES ('1', 'wangxiang', '1111', '河北工程大学', '1775924476@qq.com', null, null, null, '12345678901');
-INSERT INTO `user_table` VALUES ('2', '小明', '1111', '建国门', '123456@163.com', '最喜欢的动物', '小狗', '男', '1367129177');
+INSERT INTO `user_table` VALUES ('1', 'wangxiang', '1111', '河北大学', '17d5df76@qq.com', null, null, null, '12345678901');
+INSERT INTO `user_table` VALUES ('2', '小明', '1111', '建国门', '123456@163.com', '最喜欢的动物', '小狗', '男', '131229177');
 INSERT INTO `user_table` VALUES ('3', '小红', '123456', '天安门', '456789@qq.com', '你的姓名', '小红', '女', '789653');
-INSERT INTO `user_table` VALUES ('4', 'wangxiang', '1111', '河北工程大学', '1775924476@qq.com', null, null, null, '12345678901');
+INSERT INTO `user_table` VALUES ('4', 'wangyang', '1111', '河北大学', '1dfs4476@qq.com', null, null, null, '12345678901');
