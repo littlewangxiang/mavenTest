@@ -9,7 +9,7 @@
   </resultMap>
   <resultMap type="com.demo.im.entity.TResource" id="ResRoleResultMap" extends="BaseResultMap">
   	<collection property="roles" ofType="com.demo.im.entity.Role">
-  		<id column="u_id" property="uId" jdbcType="INTEGER" />
+  		<id column="role_id" property="roleId" jdbcType="INTEGER" />
 	    <result column="roleCode" property="rolecode" jdbcType="VARCHAR" />
 	    <result column="roleName" property="rolename" jdbcType="VARCHAR" />
 	    <result column="type" property="type" jdbcType="VARCHAR" />
@@ -34,11 +34,11 @@
   <select id="selectByParam" resultMap="ResRoleResultMap" parameterType="com.demo.im.entity.TResource">
   	select
   		r.u_id, r.resName,r.type,r.value,
-  		rl.u_id, rl.roleCode, rl.roleName, rl.type, 
+  		rl.role_id, rl.roleCode, rl.roleName, rl.type, 
   		rg.u_id, rg.rg_name, rg.type
   	from t_resource r
   		left join t_res_role rr on rr.res_id = r.u_id
-  		left join t_role rl on rl.u_id = rr.role_id
+  		left join t_role rl on rl.role_id = rr.role_id
   		left join t_role_group rg on rg.u_id = rl.rg_id
   	where "1=1"
   		<if test="uId != null" >
