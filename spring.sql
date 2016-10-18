@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-09-26 16:56:45
+Date: 2016-10-18 14:27:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -128,6 +128,25 @@ INSERT INTO `sub_table` VALUES ('5', '234234234', '34', '1', '2016-01-29', '1', 
 INSERT INTO `sub_table` VALUES ('6', '234234234', '34', '1', '2016-01-29', '1', '河北大学一号院', '13645789551');
 
 -- ----------------------------
+-- Table structure for `test_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `test_info`;
+CREATE TABLE `test_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `u_code` int(11) DEFAULT NULL,
+  `u_name` varchar(255) DEFAULT NULL,
+  `info` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of test_info
+-- ----------------------------
+INSERT INTO `test_info` VALUES ('1', '1', '小明', null);
+INSERT INTO `test_info` VALUES ('4', '2', '小红', null);
+INSERT INTO `test_info` VALUES ('6', '3', '小强', null);
+
+-- ----------------------------
 -- Table structure for `type_table`
 -- ----------------------------
 DROP TABLE IF EXISTS `type_table`;
@@ -192,7 +211,7 @@ CREATE TABLE `t_resource` (
 -- ----------------------------
 -- Records of t_resource
 -- ----------------------------
-INSERT INTO `t_resource` VALUES ('1', '根据id获取用户信息', 'URL', '/admin/getUser');
+INSERT INTO `t_resource` VALUES ('1', '根据id获取用户信息', 'URL', '/UserManager/admin/getUser');
 
 -- ----------------------------
 -- Table structure for `t_res_role`
@@ -213,12 +232,12 @@ INSERT INTO `t_res_role` VALUES ('3', '1');
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role`;
 CREATE TABLE `t_role` (
-  `u_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
   `roleCode` varchar(50) NOT NULL,
   `roleName` varchar(50) DEFAULT NULL,
   `type` varchar(50) DEFAULT NULL,
   `rg_id` int(11) NOT NULL COMMENT '角色分组',
-  PRIMARY KEY (`u_id`)
+  PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色权限表';
 
 -- ----------------------------
@@ -267,17 +286,15 @@ INSERT INTO `t_user` VALUES ('1', 'dfsd');
 DROP TABLE IF EXISTS `t_user_role`;
 CREATE TABLE `t_user_role` (
   `user_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  `u_id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `role_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_user_role
 -- ----------------------------
-INSERT INTO `t_user_role` VALUES ('4', '1', '1');
-INSERT INTO `t_user_role` VALUES ('2', '2', '2');
-INSERT INTO `t_user_role` VALUES ('2', '3', '3');
+INSERT INTO `t_user_role` VALUES ('4', '1');
+INSERT INTO `t_user_role` VALUES ('2', '2');
+INSERT INTO `t_user_role` VALUES ('4', '3');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -298,8 +315,8 @@ INSERT INTO `user` VALUES ('2', 'zhanglei', 'qweasd', 'USER');
 INSERT INTO `user` VALUES ('3', '\"ceshi\"', '\"pass\"', 'USER');
 INSERT INTO `user` VALUES ('4', 'admin', '1111', 'ADMIN');
 INSERT INTO `user` VALUES ('5', '\"wangxiagn\"', '\"1111\"', 'USER');
-INSERT INTO `user` VALUES ('6', '王小样', '123456', 'USER');
-INSERT INTO `user` VALUES ('7', '王洋', '123456', 'USER');
+INSERT INTO `user` VALUES ('6', '王祥', '123456', 'USER');
+INSERT INTO `user` VALUES ('7', '王祥', '123456', 'USER');
 INSERT INTO `user` VALUES ('8', '嘿嘿', '567', 'USER');
 INSERT INTO `user` VALUES ('9', '哈哈34', '434', 'USER');
 INSERT INTO `user` VALUES ('12', 'wx', '11111', 'USER');
@@ -327,7 +344,7 @@ CREATE TABLE `user_table` (
 -- ----------------------------
 -- Records of user_table
 -- ----------------------------
-INSERT INTO `user_table` VALUES ('1', 'wangxiang', '1111', '河北工业大学', '1775924476@qq.com', null, null, null, '12345678901');
+INSERT INTO `user_table` VALUES ('1', 'wangxiang', '1111', '河北工程大学', '1775924476@qq.com', null, null, null, '12345678901');
 INSERT INTO `user_table` VALUES ('2', '小明', '1111', '建国门', '123456@163.com', '最喜欢的动物', '小狗', '男', '1367129177');
 INSERT INTO `user_table` VALUES ('3', '小红', '123456', '天安门', '456789@qq.com', '你的姓名', '小红', '女', '789653');
-INSERT INTO `user_table` VALUES ('4', 'wangxiang', '1111', '河北工业大学', '1775924476@qq.com', null, null, null, '12345678901');
+INSERT INTO `user_table` VALUES ('4', 'wangxiang', '1111', '河北工程大学', '1775924476@qq.com', null, null, null, '12345678901');
